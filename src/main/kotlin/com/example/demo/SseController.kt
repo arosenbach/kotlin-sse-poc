@@ -4,6 +4,7 @@ package com.example.demo
 import org.springframework.http.codec.ServerSentEvent
 import org.springframework.messaging.SubscribableChannel
 import org.springframework.stereotype.Controller
+import org.springframework.web.bind.annotation.CrossOrigin
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import reactor.core.publisher.Flux
@@ -11,6 +12,7 @@ import java.time.Duration
 
 
 @Controller
+@CrossOrigin(origins = ["*"], allowedHeaders = ["Requestor-Type"], exposedHeaders = ["X-Get-Header"])
 @RequestMapping("/api/event")
 class SseController(private var jobDataChannel: SubscribableChannel) {
 
